@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Hazirah - My Family</title>
+<!-- IMPORT GOOGLE FONTS -->
+<link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,600;1,400&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+<!-- LINK TO EXTERNAL CSS -->
+<link rel="stylesheet" href="family.css">
+
+</head>
+<body>
+
+<!-- HERO -->
+<div class="hero-image">
+  <div class="hero-text">
+    <h1>My Beloved Family</h1>
+    <p id="datetime"></p>
+  </div>
+</div>
+
+<!-- ICON NAVIGATION -->
+<div class="icon-sections">
+  <a href="homepage.html" class="icon-card">
+    <div class="icon-inner">
+      <div class="icon-emoji">🏠</div>
+      <div class="icon-text">Home</div>
+    </div>
+  </a>
+
+  <a href="biodata.html" class="icon-card">
+    <div class="icon-inner">
+      <div class="icon-emoji">🧾</div>
+      <div class="icon-text">Biodata</div>
+    </div>
+  </a>
+
+  <a href="education.html" class="icon-card">
+    <div class="icon-inner">
+      <div class="icon-emoji">🎓</div>
+      <div class="icon-text">Education</div>
+    </div>
+  </a>
+
+  <a href="experience.html" class="icon-card">
+    <div class="icon-inner">
+      <div class="icon-emoji">💼</div>
+      <div class="icon-text">Experience</div>
+    </div>
+  </a>
+  
+  <!-- ACTIVE FAMILY ICON -->
+  <div class="icon-card active-icon">
+    <div class="icon-inner">
+      <div class="icon-emoji">👨‍👩‍👧‍👦</div>
+      <div class="icon-text">Family</div>
+    </div>
+  </div>
+
+  <!-- GALLERY ICON -->
+  <a href="gallery.html" class="icon-card">
+    <div class="icon-inner">
+      <div class="icon-emoji">🖼️</div>
+      <div class="icon-text">Gallery</div>
+    </div>
+  </a>
+</div>
+
+<!-- MAIN CONTENT -->
+<div class="family-container">
+  
+  <div class="section-header">
+    <h2>The Pillars of My Life</h2>
+    <p>"Family is not an important thing. It's everything."</p>
+  </div>
+
+  <!-- PARENTS SECTION -->
+  <div class="parents-wrapper">
+    
+    <!-- FATHER -->
+    <div class="family-card">
+      <img src="abah.jpg" alt="Abah" class="card-img-top"> 
+      <div class="card-body">
+        <span class="role-badge">King of the House 👑</span>
+        <h3 class="name">Azamnudin Bin Ismail</h3>
+        <span class="dob">🎂 27 August 1974</span>
+        <hr style="border:0; border-top:1px solid #eee; margin: 15px 0;">
+        <p class="job-title">Works at<br><b>Insurance Company</b></p>
+      </div>
+    </div>
+
+    <!-- HEART CONNECTOR -->
+    <div class="heart-badge">
+      <div class="heart-emoji">💍</div>
+      <div class="anniversary-year">Est. 2001</div>
+    </div>
+
+    <!-- MOTHER -->
+    <div class="family-card">
+      <img src="ibu.jpg" alt="Ibu" class="card-img-top"> 
+      <div class="card-body">
+        <span class="role-badge">Queen of My Heart 👑</span>
+        <h3 class="name">Hana Ezuanee Binti Fisal</h3>
+        <span class="dob">🎂 16 September 1977</span>
+        <hr style="border:0; border-top:1px solid #eee; margin: 15px 0;">
+        <p class="job-title">Specialist Doctor (O&G)<br><b>Hospital Melaka</b></p>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- SIBLINGS SECTION -->
+  <div class="section-header">
+    <h2>My Siblings</h2>
+    <p>Partners in crime and best friends for life.</p>
+  </div>
+
+  <div class="siblings-grid">
+    
+    <!-- 1. ELDEST SISTER -->
+    <div class="family-card">
+      <img src="kakak.jpg" alt="Sister" class="card-img-top"> 
+      <div class="card-body">
+        <span class="role-badge">The Eldest</span>
+        <h3 class="name">Nur Azma Hanisah</h3>
+        <span class="dob">🎂 8 August 2002</span>
+        <p class="job-title">Preschool Teacher<br>(Melaka)</p>
+      </div>
+    </div>
+
+    <!-- 2. ME (HAZIRAH) -->
+    <div class="family-card me-card">
+      <img src="me.jpg" alt="Hazirah" class="card-img-top"> 
+      <div class="card-body">
+        <span class="role-badge" style="background:#bba487; color:white;">It's Me! 🧸</span>
+        <h3 class="name">Nur Azma Hazirah</h3>
+        <span class="dob">🎂 12 September 2005</span>
+        <p class="job-title">Fulltime Student<br>UiTM Segamat</p>
+      </div>
+    </div>
+
+    <!-- 3. YOUNGEST BROTHER -->
+    <div class="family-card">
+      <img src="adik.jpg" alt="Brother" class="card-img-top"> 
+      <div class="card-body">
+        <span class="role-badge">The Youngest</span>
+        <h3 class="name">Muhammad Aqil</h3>
+        <span class="dob">🎂 2 April 2008</span>
+        <p class="job-title">Secondary School Student<br>(Melaka)</p>
+      </div>
+    </div>
+
+  </div>
+
+</div>
+
+<!-- FOOTER -->
+<div class="footer">
+  &copy; 2025 Nur Azma Hazirah Binti Azamnudin | Designed with 🤍
+</div>
+
+<!-- BACKGROUND MUSIC ELEMENT -->
+<audio id="bg-music" loop>
+  <source src="family.mp3" type="audio/mpeg">
+</audio>
+
+<!-- LINK TO EXTERNAL JS -->
+<script src="family.js"></script>
+
+</body>
+</html>
