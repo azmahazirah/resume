@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Hazirah - Visual Journey</title>
+
+<!-- 1. GOOGLE FONTS -->
+<link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,600;1,400&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+<!-- 2. SWIPER CSS (REQUIRED FOR SLIDERS) -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+
+<!-- 3. LINK TO EXTERNAL CSS -->
+<link rel="stylesheet" href="gallery.css">
+
+</head>
+<body>
+
+<!-- HERO -->
+<div class="hero-image">
+  <div class="hero-text">
+    <h1>Moments in Time 📸</h1>
+    <p id="datetime"></p>
+  </div>
+</div>
+
+<!-- NAV -->
+<div class="icon-sections">
+  <a href="homepage.html" class="icon-card">
+    <div class="icon-inner">
+      <div class="icon-emoji">🏠</div>
+      <div class="icon-text">Home</div>
+    </div>
+  </a>
+
+  <a href="biodata.html" class="icon-card">
+    <div class="icon-inner">
+      <div class="icon-emoji">🧾</div>
+      <div class="icon-text">Biodata</div>
+    </div>
+  </a>
+
+  <a href="education.html" class="icon-card">
+    <div class="icon-inner">
+      <div class="icon-emoji">🎓</div>
+      <div class="icon-text">Education</div>
+    </div>
+  </a>
+
+  <a href="experience.html" class="icon-card">
+    <div class="icon-inner">
+      <div class="icon-emoji">💼</div>
+      <div class="icon-text">Experience</div>
+    </div>
+  </a>
+
+  <a href="family.html" class="icon-card">
+    <div class="icon-inner">
+      <div class="icon-emoji">👨‍👩‍👧‍👦</div>
+      <div class="icon-text">Family</div>
+    </div>
+  </a>
+
+  <div class="icon-card active-icon">
+    <div class="icon-inner">
+      <div class="icon-emoji">🖼️</div>
+      <div class="icon-text">Gallery</div>
+    </div>
+  </div>
+</div>
+
+<!-- PART 1: FAMILY (3D SWIPER CAROUSEL) -->
+<div class="section-container">
+  <h2 class="section-title">❤️</h2>
+  <p class="section-subtitle">Moments</p>
+
+  <!-- Swiper Container for PHOTOS -->
+  <div class="swiper photoSwiper">
+    <div class="swiper-wrapper">
+      <div class="swiper-slide" onclick="openLightbox(this)"><img src="fam1.jpg" alt="Family 1"></div>
+      <div class="swiper-slide" onclick="openLightbox(this)"><img src="fam2.jpg" alt="Family 2"></div>
+      <div class="swiper-slide" onclick="openLightbox(this)"><img src="fam3.jpg" alt="Family 3"></div>
+      <div class="swiper-slide" onclick="openLightbox(this)"><img src="fam4.jpg" alt="Family 4"></div>
+      <div class="swiper-slide" onclick="openLightbox(this)"><img src="fam5.jpg" alt="Family 5"></div>
+      <div class="swiper-slide" onclick="openLightbox(this)"><img src="fam6.jpg" alt="Family 6"></div>
+      <div class="swiper-slide" onclick="openLightbox(this)"><img src="fam7.jpg" alt="Family 7"></div>
+      <div class="swiper-slide" onclick="openLightbox(this)"><img src="fam8.jpg" alt="Family 8"></div>
+      <div class="swiper-slide" onclick="openLightbox(this)"><img src="fam9.jpg" alt="Family 9"></div>
+      <div class="swiper-slide" onclick="openLightbox(this)"><img src="fam10.jpg" alt="Family 10"></div>
+      <div class="swiper-slide" onclick="openLightbox(this)"><img src="fam11.jpg" alt="Family 11"></div>
+      <div class="swiper-slide" onclick="openLightbox(this)"><img src="fam12.jpg" alt="Family 12"></div>
+      <div class="swiper-slide" onclick="openLightbox(this)"><img src="fam13.jpg" alt="Family 13"></div>
+      <div class="swiper-slide" onclick="openLightbox(this)"><img src="fam14.jpg" alt="Family 14"></div>
+      <div class="swiper-slide" onclick="openLightbox(this)"><img src="fam15.jpg" alt="Family 15"></div>
+    </div>
+    <div class="swiper-pagination"></div>
+  </div>
+</div>
+
+<!-- PART 2: EDUCATION & FRIENDS (VIDEO SLIDER) -->
+<div class="video-section-bg">
+  <div class="section-container" style="padding: 0; margin-top: 0;">
+    <h2 class="section-title">Education & Friends 🎥</h2>
+    <p class="section-subtitle">Highlights in motion</p>
+
+    <!-- Swiper Container for VIDEOS -->
+    <div class="swiper videoSwiper">
+      <div class="swiper-wrapper">
+        
+        <!-- VIDEO 1 -->
+        <div class="swiper-slide">
+          <video controls>
+            <source src="vid1.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+          </video>
+        </div>
+
+        <!-- VIDEO 2 -->
+        <div class="swiper-slide">
+          <video controls>
+            <source src="vid2.mp4" type="video/mp4">
+          </video>
+        </div>
+
+        <!-- VIDEO 3 -->
+        <div class="swiper-slide">
+          <video controls>
+            <source src="vid3.mp4" type="video/mp4">
+          </video>
+        </div>
+
+        <!-- VIDEO 4 -->
+        <div class="swiper-slide">
+          <video controls>
+            <source src="vid4.mp4" type="video/mp4">
+          </video>
+        </div>
+      </div>
+      <!-- Add Pagination -->
+      <div class="swiper-pagination"></div>
+      <!-- Add Navigation Arrows -->
+      <div class="swiper-button-next"></div>
+      <div class="swiper-button-prev"></div>
+    </div>
+  </div>
+</div>
+
+<!-- LIGHTBOX -->
+<div class="lightbox" id="lightbox">
+  <span class="close-btn" onclick="closeLightbox()">&times;</span>
+  <img id="lightbox-img" src="" alt="Zoomed Image">
+</div>
+
+<!-- FOOTER -->
+<div class="footer">
+  &copy; 2025 Nur Azma Hazirah Binti Azamnudin | Designed with 🤍
+</div>
+
+<!-- MUSIC ELEMENT -->
+<audio id="bg-music" loop>
+  <source src="gallery.mp3" type="audio/mpeg">
+</audio>
+
+<!-- SCRIPTS -->
+<!-- 1. SWIPER JS LIBRARY (REQUIRED) -->
+<script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+
+<!-- 2. LINK TO EXTERNAL JS -->
+<script src="gallery.js"></script>
+
+</body>
+</html>
