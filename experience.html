@@ -1,0 +1,481 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Hazirah - Work Experience</title>
+<!-- IMPORT GOOGLE FONTS -->
+<link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,600;1,400&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+<style>
+/* --- 1. RESET & GENERAL --- */
+* { box-sizing: border-box; }
+
+body, html {
+  margin: 0;
+  padding: 0;
+  font-family: 'Poppins', sans-serif;
+  background-color: #fdfcf8;
+  color: #332421;
+  scroll-behavior: smooth;
+}
+
+h1, h2, h3 { font-family: 'Lora', serif; }
+
+/* --- 2. HERO SECTION --- */
+.hero-image {
+  background-image: linear-gradient(rgba(51, 36, 33, 0.7), rgba(51, 36, 33, 0.5)), url("bg.jpg");
+  height: 60vh; 
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  color: white;
+}
+
+.hero-text h1 {
+  font-size: 3.5rem;
+  margin: 0;
+  text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+  letter-spacing: 1px;
+}
+
+#datetime {
+  font-size: 0.9rem;
+  background-color: rgba(187, 164, 135, 0.9);
+  color: #332421;
+  padding: 8px 25px;
+  border-radius: 50px;
+  margin-top: 15px;
+  font-weight: 600;
+  backdrop-filter: blur(5px);
+}
+
+/* --- 3. FLOATING NAVIGATION (ICONS) --- */
+.icon-sections {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 25px;
+  padding: 0 20px;
+  margin-top: -50px; 
+  position: relative;
+  z-index: 10;
+}
+
+.icon-card {
+  width: 110px;
+  height: 110px;
+  background: white;
+  border-radius: 15px;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.1); 
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  text-decoration: none;
+}
+
+.icon-card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 15px 30px rgba(187, 164, 135, 0.4);
+}
+
+/* ACTIVE STATE (Dark Brown) */
+.active-icon {
+  background: #332421;
+  color: white;
+  transform: translateY(-10px);
+  box-shadow: 0 15px 30px rgba(51, 36, 33, 0.4);
+}
+
+.active-icon .icon-text { color: #bba487; }
+
+.icon-emoji { font-size: 35px; margin-bottom: 5px; }
+.icon-text { font-size: 13px; font-weight: 600; color: #555; margin-top: 5px; }
+
+/* --- 4. EXPERIENCE GRID (The "Shock" Design) --- */
+.experience-container {
+  max-width: 1100px;
+  margin: 80px auto;
+  padding: 0 20px;
+}
+
+.exp-intro {
+  text-align: center;
+  margin-bottom: 50px;
+}
+.exp-intro h2 { font-size: 2.5rem; color: #332421; margin-bottom: 10px; }
+.exp-intro p { font-style: italic; color: #666; }
+
+/* Grid Layout */
+.job-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 30px;
+}
+
+/* The Job Card */
+.job-card {
+  background: white;
+  border-radius: 20px;
+  padding: 30px;
+  position: relative;
+  transition: all 0.4s ease;
+  border-bottom: 5px solid #bba487; /* Subtle color accent */
+  box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+/* Hover Effect - The "Wow" Factor */
+.job-card:hover {
+  transform: translateY(-15px) scale(1.02);
+  box-shadow: 0 20px 40px rgba(51, 36, 33, 0.15);
+}
+
+/* Internship Card (Makes it wider to stand out) */
+.highlight-card {
+  grid-column: 1 / -1; /* Spans full width */
+  background: linear-gradient(135deg, #fff, #fdfcf8);
+  border-left: 10px solid #332421;
+  border-bottom: none;
+}
+
+/* Logo Placeholder Area */
+.job-header {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  margin-bottom: 20px;
+}
+
+.logo-box {
+  width: 70px;
+  height: 70px;
+  background: #eee; /* Grey placeholder */
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  border: 2px solid #bba487;
+  flex-shrink: 0;
+}
+
+.logo-box img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover; /* Ensures image fits circle */
+}
+
+.job-title-area h3 {
+  margin: 0;
+  font-size: 1.3rem;
+  color: #332421;
+}
+
+.job-company {
+  color: #bba487;
+  font-weight: 600;
+  font-size: 0.9rem;
+  text-transform: uppercase;
+}
+
+.job-duration {
+  background: #f4ece4;
+  color: #332421;
+  padding: 5px 15px;
+  border-radius: 20px;
+  font-size: 0.8rem;
+  font-weight: bold;
+  display: inline-block;
+  margin-top: 5px;
+}
+
+.job-desc {
+  color: #666;
+  font-size: 0.95rem;
+  line-height: 1.6;
+  margin-bottom: 20px;
+}
+
+/* Tags at bottom of card */
+.skill-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: auto; /* Pushes to bottom */
+}
+
+.tag {
+  font-size: 0.75rem;
+  background: #332421;
+  color: white;
+  padding: 5px 12px;
+  border-radius: 5px;
+}
+
+/* --- 5. FOOTER --- */
+.footer {
+  background-color: #332421;
+  color: #bba487;
+  text-align: center;
+  padding: 30px 0;
+  font-size: 0.9rem;
+  margin-top: 80px;
+}
+
+/* Mobile Fix */
+@media screen and (max-width: 768px) {
+  .hero-text h1 { font-size: 2.5rem; }
+  .highlight-card { grid-column: auto; /* Stacks normally on mobile */ }
+}
+</style>
+</head>
+<body>
+
+<!-- HERO -->
+<div class="hero-image">
+  <div class="hero-text">
+    <h1>Professional Experience</h1>
+    <p id="datetime"></p>
+  </div>
+</div>
+
+<!-- ICON NAVIGATION -->
+<div class="icon-sections">
+  <!-- 1. HOME -->
+  <a href="homepage.html" class="icon-card">
+    <div class="icon-inner">
+      <div class="icon-emoji">🏠</div>
+      <div class="icon-text">Home</div>
+    </div>
+  </a>
+
+  <!-- 2. BIODATA -->
+  <a href="biodata.html" class="icon-card">
+    <div class="icon-inner">
+      <div class="icon-emoji">🧾</div>
+      <div class="icon-text">Biodata</div>
+    </div>
+  </a>
+
+  <!-- 3. EDUCATION -->
+  <a href="education.html" class="icon-card">
+    <div class="icon-inner">
+      <div class="icon-emoji">🎓</div>
+      <div class="icon-text">Education</div>
+    </div>
+  </a>
+
+  <!-- 4. EXPERIENCE (ACTIVE) -->
+  <div class="icon-card active-icon">
+    <div class="icon-inner">
+      <div class="icon-emoji">💼</div>
+      <div class="icon-text">Experience</div>
+    </div>
+  </div>
+
+ <!-- 5. FAMILY ICON (LINKS TO FAMILY.HTML) -->
+  <a href="family.html" class="icon-card">
+    <div class="icon-inner">
+      <div class="icon-emoji">👨‍👩‍👧‍👦</div>
+      <div class="icon-text">Family</div>
+    </div>
+  </a>
+
+<!-- 6. GALLERY ICON (LINKS TO GALLERY.HTML) -->
+  <a href="gallery.html" class="icon-card">
+    <div class="icon-inner">
+      <div class="icon-emoji">🖼️</div>
+      <div class="icon-text">Gallery</div>
+    </div>
+  </a>
+</div>
+
+<!-- EXPERIENCE GRID -->
+<div class="experience-container">
+  
+  <div class="exp-intro">
+    <h2>Career & Community Journey</h2>
+    <p>"Every job is a self-portrait of the person who does it."</p>
+  </div>
+
+  <div class="job-grid">
+    
+    <!-- 1. INTERNSHIP (HIGHLIGHTED CARD) -->
+    <div class="job-card highlight-card">
+      <div class="job-header">
+        <div class="logo-box">
+          <!-- Insert Logo Here -->
+          <img src="hospital.png" alt="Hospital Logo"> 
+        </div>
+        <div class="job-title-area">
+          <h3>Industrial Training</h3>
+          <div class="job-company">Unit Record, Hospital Melaka</div>
+          <div class="job-duration">2 Months (Internship)</div>
+        </div>
+      </div>
+      <p class="job-desc">
+        Completed practical training at the Records Unit. Gained hands-on experience in managing patient files, systematic filing, data entry, and understanding hospital administration workflows. This role enhanced my attention to detail and professional discipline in a healthcare setting.
+      </p>
+      <div class="skill-tags">
+        <span class="tag">Record Management</span>
+        <span class="tag">Administration</span>
+        <span class="tag">Data Entry</span>
+        <span class="tag">Systematic Filing</span>
+      </div>
+    </div>
+
+    <!-- 2. TEACHING -->
+    <div class="job-card">
+      <div class="job-header">
+        <div class="logo-box">
+          <img src="quran.jpg" alt="Logo">
+        </div>
+        <div class="job-title-area">
+          <h3>Quran Teacher </h3>
+          <div class="job-company">Assistant</div>
+          <div class="job-duration">Semester Break</div>
+        </div>
+      </div>
+      <p class="job-desc">
+        Assisted my neighbor (Ustazah) in teaching children aged 5-12 years old. Guided them in reciting Iqra', Muqaddam, and Al-Quran. Developed patience and communication skills while handling young students.
+      </p>
+      <div class="skill-tags">
+        <span class="tag">Teaching</span>
+        <span class="tag">Leadership</span>
+        <span class="tag">Patience</span>
+      </div>
+    </div>
+
+    <!-- 3. WATSONS -->
+    <div class="job-card">
+      <div class="job-header">
+        <div class="logo-box">
+          <img src="watson.jpg" alt="Watsons">
+        </div>
+        <div class="job-title-area">
+          <h3>Retail Crew</h3>
+          <div class="job-company">Watsons</div>
+          <div class="job-duration">Part Time</div>
+        </div>
+      </div>
+      <p class="job-desc">
+        Managed customer inquiries, assisted with product recommendations, and ensured store shelves were stocked and organized. Learned about health and beauty products while maintaining a friendly attitude.
+      </p>
+      <div class="skill-tags">
+        <span class="tag">Customer Service</span>
+        <span class="tag">Product Knowledge</span>
+        <span class="tag">Sales</span>
+      </div>
+    </div>
+
+    <!-- 4. MR.DIY -->
+    <div class="job-card">
+      <div class="job-header">
+        <div class="logo-box">
+          <img src="mrdiy.png" alt="MR.DIY">
+        </div>
+        <div class="job-title-area">
+          <h3>Retail Crew</h3>
+          <div class="job-company">MR.DIY</div>
+          <div class="job-duration">Part Time</div>
+        </div>
+      </div>
+      <p class="job-desc">
+        Responsible for inventory management, arranging stock, and cashier duties. Worked in a fast-paced environment, ensuring efficiency and store cleanliness.
+      </p>
+      <div class="skill-tags">
+        <span class="tag">Inventory</span>
+        <span class="tag">Teamwork</span>
+        <span class="tag">Efficiency</span>
+      </div>
+    </div>
+
+    <!-- 5. FAMILY STORE -->
+    <div class="job-card">
+      <div class="job-header">
+        <div class="logo-box">
+          <img src="familystore.png" alt="Family Store">
+        </div>
+        <div class="job-title-area">
+          <h3>Cashier</h3>
+          <div class="job-company">Family Store Duyong</div>
+          <div class="job-duration">Post-SPM</div>
+        </div>
+      </div>
+      <p class="job-desc">
+        My first job right after SPM. Handled cash transactions accurately, balanced the register, and served customers with a smile. This job taught me responsibility and money management.
+      </p>
+      <div class="skill-tags">
+        <span class="tag">Cash Handling</span>
+        <span class="tag">Communication</span>
+        <span class="tag">Responsibility</span>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- FOOTER -->
+<div class="footer">
+  &copy; 2025 Nur Azma Hazirah Binti Azamnudin | Designed with 🤍
+</div>
+
+<!-- SCRIPTS -->
+<script>
+// DATE TIME
+function updateDateTime(){
+  const d = new Date();
+  const utc = d.getTime() + d.getTimezoneOffset()*60000;
+  const malaysiaTime = new Date(utc + 8*3600000);
+  const options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
+  document.getElementById("datetime").textContent = malaysiaTime.toLocaleDateString('en-GB', options) + ' | ' + malaysiaTime.toLocaleTimeString('en-GB') + ' (Malaysia Time)';
+}
+updateDateTime();
+setInterval(updateDateTime, 1000);
+
+// Simple Reveal Animation on Load
+window.addEventListener('DOMContentLoaded', () => {
+  const cards = document.querySelectorAll('.job-card');
+  cards.forEach((card, index) => {
+    setTimeout(() => {
+      card.style.opacity = '1';
+      card.style.transform = 'translateY(0)';
+    }, index * 200); // Staggered animation
+  });
+});
+</script>
+
+<!-- MUSIC -->
+<audio id="bg-music" loop>
+  <source src="experience.mp3">
+</audio>
+
+<script>
+  window.addEventListener('DOMContentLoaded', function() {
+    var audio = document.getElementById("bg-music");
+    audio.volume = 0.5;
+    var playPromise = audio.play();
+    if (playPromise !== undefined) {
+      playPromise.then(_ => {}).catch(error => {
+        document.body.addEventListener('click', function() {
+          audio.play();
+        }, { once: true });
+      });
+    }
+  });
+</script>
+
+</body>
+</html>
