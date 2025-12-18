@@ -1,0 +1,419 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Hazirah - My Family</title>
+<!-- IMPORT GOOGLE FONTS -->
+<link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,600;1,400&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+<style>
+/* --- 1. RESET & GENERAL --- */
+* { box-sizing: border-box; }
+
+body, html {
+  margin: 0;
+  padding: 0;
+  font-family: 'Poppins', sans-serif;
+  background-color: #fdfcf8; /* Cream background */
+  color: #332421;
+  scroll-behavior: smooth;
+}
+
+h1, h2, h3, h4 { font-family: 'Lora', serif; }
+
+/* --- 2. HERO SECTION --- */
+.hero-image {
+  background-image: linear-gradient(rgba(51, 36, 33, 0.6), rgba(51, 36, 33, 0.4)), url("bg.jpg");
+  height: 60vh; 
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  color: white;
+}
+
+.hero-text h1 {
+  font-size: 3.5rem;
+  margin: 0;
+  text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+}
+
+#datetime {
+  font-size: 0.9rem;
+  background-color: rgba(187, 164, 135, 0.9);
+  color: #332421;
+  padding: 8px 25px;
+  border-radius: 50px;
+  margin-top: 15px;
+  font-weight: 600;
+  backdrop-filter: blur(5px);
+}
+
+/* --- 3. FLOATING ICON NAVIGATION --- */
+.icon-sections {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 25px;
+  padding: 0 20px;
+  margin-top: -50px; 
+  position: relative;
+  z-index: 10;
+}
+
+.icon-card {
+  width: 110px;
+  height: 110px;
+  background: white;
+  border-radius: 15px;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  text-decoration: none;
+}
+
+.icon-card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 15px 30px rgba(187, 164, 135, 0.4);
+}
+
+.active-icon {
+  background: #332421;
+  color: white;
+  transform: translateY(-10px);
+  box-shadow: 0 15px 30px rgba(51, 36, 33, 0.4);
+}
+
+.active-icon .icon-text { color: #bba487; }
+
+.icon-emoji { font-size: 35px; margin-bottom: 5px; }
+.icon-text { font-size: 13px; font-weight: 600; color: #555; margin-top: 5px;}
+
+/* --- 4. FAMILY CONTENT LAYOUT --- */
+.family-container {
+  max-width: 1100px;
+  margin: 80px auto;
+  padding: 0 20px;
+  text-align: center;
+}
+
+.section-header {
+  margin-bottom: 50px;
+}
+.section-header h2 { font-size: 2.5rem; color: #332421; margin-bottom: 10px; }
+.section-header p { color: #666; font-style: italic; }
+
+/* --- PARENTS SECTION --- */
+.parents-wrapper {
+  display: flex;
+  justify-content: center;
+  gap: 40px;
+  flex-wrap: wrap;
+  margin-bottom: 60px;
+  position: relative;
+}
+
+/* The Heart Connector */
+.heart-badge {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: #bba487;
+  color: white;
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  z-index: 5;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+  border: 4px solid #fff;
+}
+.heart-emoji { font-size: 24px; }
+.anniversary-year { font-size: 11px; font-weight: bold; }
+
+.family-card {
+  background: white;
+  width: 350px;
+  border-radius: 20px;
+  overflow: hidden;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+  transition: transform 0.3s;
+  border-bottom: 5px solid #bba487;
+}
+
+.family-card:hover { transform: translateY(-10px); }
+
+.card-img-top {
+  width: 100%;
+  height: 250px;
+  object-fit: cover;
+  border-bottom: 1px solid #eee;
+}
+
+.card-body { padding: 25px; }
+
+.role-badge {
+  background: #332421;
+  color: #bba487;
+  padding: 5px 15px;
+  border-radius: 50px;
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  font-weight: 600;
+  display: inline-block;
+  margin-bottom: 10px;
+}
+
+.name { font-size: 1.4rem; margin: 5px 0; color: #332421; }
+.dob { font-size: 0.9rem; color: #888; margin-bottom: 15px; display: block;}
+.job-title { color: #555; font-weight: 500; font-size: 1rem; line-height: 1.5; }
+
+/* --- SIBLINGS SECTION --- */
+.siblings-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 30px;
+  margin-top: 20px;
+}
+
+/* Highlight the user (Hazirah) */
+.me-card {
+  border: 2px solid #bba487;
+  transform: scale(1.02);
+}
+
+/* --- FOOTER --- */
+.footer {
+  background-color: #332421;
+  color: #bba487;
+  text-align: center;
+  padding: 30px 0;
+  font-size: 0.9rem;
+  margin-top: 80px;
+}
+
+/* Responsive */
+@media screen and (max-width: 800px) {
+  .parents-wrapper { flex-direction: column; align-items: center; gap: 30px;}
+  .heart-badge { position: static; transform: none; margin: -15px auto; width: 60px; height: 60px; }
+  .heart-emoji { font-size: 20px; }
+  .anniversary-year { font-size: 9px; }
+  .hero-text h1 { font-size: 2.5rem; }
+}
+</style>
+</head>
+<body>
+
+<!-- HERO -->
+<div class="hero-image">
+  <div class="hero-text">
+    <h1>My Beloved Family</h1>
+    <p id="datetime"></p>
+  </div>
+</div>
+
+<!-- ICON NAVIGATION -->
+<div class="icon-sections">
+  <a href="homepage.html" class="icon-card">
+    <div class="icon-inner">
+      <div class="icon-emoji">🏠</div>
+      <div class="icon-text">Home</div>
+    </div>
+  </a>
+
+  <a href="biodata.html" class="icon-card">
+    <div class="icon-inner">
+      <div class="icon-emoji">🧾</div>
+      <div class="icon-text">Biodata</div>
+    </div>
+  </a>
+
+  <a href="education.html" class="icon-card">
+    <div class="icon-inner">
+      <div class="icon-emoji">🎓</div>
+      <div class="icon-text">Education</div>
+    </div>
+  </a>
+
+  <a href="experience.html" class="icon-card">
+    <div class="icon-inner">
+      <div class="icon-emoji">💼</div>
+      <div class="icon-text">Experience</div>
+    </div>
+  </a>
+  
+  <!-- ACTIVE FAMILY ICON -->
+  <div class="icon-card active-icon">
+    <div class="icon-inner">
+      <div class="icon-emoji">👨‍👩‍👧‍👦</div>
+      <div class="icon-text">Family</div>
+    </div>
+  </div>
+
+  <!-- GALLERY ICON (FIXED: ONLY ONE NOW) -->
+  <a href="gallery.html" class="icon-card">
+    <div class="icon-inner">
+      <div class="icon-emoji">🖼️</div>
+      <div class="icon-text">Gallery</div>
+    </div>
+  </a>
+</div>
+
+<!-- MAIN CONTENT -->
+<div class="family-container">
+  
+  <div class="section-header">
+    <h2>The Pillars of My Life</h2>
+    <p>"Family is not an important thing. It's everything."</p>
+  </div>
+
+  <!-- PARENTS SECTION -->
+  <div class="parents-wrapper">
+    
+    <!-- FATHER -->
+    <div class="family-card">
+      <img src="abah.jpg" alt="Abah" class="card-img-top"> <!-- Replace with abah image -->
+      <div class="card-body">
+        <span class="role-badge">King of the House 👑</span>
+        <h3 class="name">Azamnudin Bin Ismail</h3>
+        <span class="dob">🎂 27 August 1974</span>
+        <hr style="border:0; border-top:1px solid #eee; margin: 15px 0;">
+        <p class="job-title">Works at<br><b>Insurance Company</b></p>
+      </div>
+    </div>
+
+    <!-- HEART CONNECTOR -->
+    <div class="heart-badge">
+      <div class="heart-emoji">💍</div>
+      <div class="anniversary-year">Est. 2001</div>
+    </div>
+
+    <!-- MOTHER -->
+    <div class="family-card">
+      <img src="ibu.jpg" alt="Ibu" class="card-img-top"> <!-- Replace with ibu image -->
+      <div class="card-body">
+        <span class="role-badge">Queen of My Heart 👑</span>
+        <h3 class="name">Hana Ezuanee Binti Fisal</h3>
+        <span class="dob">🎂 16 September 1977</span>
+        <hr style="border:0; border-top:1px solid #eee; margin: 15px 0;">
+        <p class="job-title">Specialist Doctor (O&G)<br><b>Hospital Melaka</b></p>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- SIBLINGS SECTION -->
+  <div class="section-header">
+    <h2>My Siblings</h2>
+    <p>Partners in crime and best friends for life.</p>
+  </div>
+
+  <div class="siblings-grid">
+    
+    <!-- 1. ELDEST SISTER -->
+    <div class="family-card">
+      <img src="kakak.jpg" alt="Sister" class="card-img-top"> <!-- Replace with sister image -->
+      <div class="card-body">
+        <span class="role-badge">The Eldest</span>
+        <h3 class="name">Nur Azma Hanisah</h3>
+        <span class="dob">🎂 8 August 2002</span>
+        <p class="job-title">Preschool Teacher<br>(Melaka)</p>
+      </div>
+    </div>
+
+    <!-- 2. ME (HAZIRAH) -->
+    <div class="family-card me-card">
+      <img src="me.jpg" alt="Hazirah" class="card-img-top"> <!-- Your image -->
+      <div class="card-body">
+        <span class="role-badge" style="background:#bba487; color:white;">It's Me! 🧸</span>
+        <h3 class="name">Nur Azma Hazirah</h3>
+        <span class="dob">🎂 12 September 2005</span>
+        <p class="job-title">Fulltime Student<br>UiTM Segamat</p>
+      </div>
+    </div>
+
+    <!-- 3. YOUNGEST BROTHER -->
+    <div class="family-card">
+      <img src="adik.jpg" alt="Brother" class="card-img-top"> <!-- Replace with brother image -->
+      <div class="card-body">
+        <span class="role-badge">The Youngest</span>
+        <h3 class="name">Muhammad Aqil</h3>
+        <span class="dob">🎂 2 April 2008</span>
+        <p class="job-title">Secondary School Student<br>(Melaka)</p>
+      </div>
+    </div>
+
+  </div>
+
+</div>
+
+<!-- FOOTER -->
+<div class="footer">
+  &copy; 2025 Nur Azma Hazirah Binti Azamnudin | Designed with 🤍
+</div>
+
+<!-- SCRIPTS -->
+<script>
+// DATE TIME SCRIPT
+function updateDateTime(){
+  const d = new Date();
+  const utc = d.getTime() + d.getTimezoneOffset()*60000;
+  const malaysiaTime = new Date(utc + 8*3600000);
+  const options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
+  document.getElementById("datetime").textContent = malaysiaTime.toLocaleDateString('en-GB', options) + ' | ' + malaysiaTime.toLocaleTimeString('en-GB') + ' (Malaysia Time)';
+}
+updateDateTime();
+setInterval(updateDateTime, 1000);
+
+// REVEAL ANIMATION
+window.addEventListener('scroll', () => {
+  const cards = document.querySelectorAll('.family-card');
+  const triggerBottom = window.innerHeight / 5 * 4;
+
+  cards.forEach(card => {
+    const cardTop = card.getBoundingClientRect().top;
+    if(cardTop < triggerBottom) {
+      card.style.opacity = '1';
+      card.style.transform = 'translateY(0)';
+    }
+  });
+});
+</script>
+
+<!-- BACKGROUND MUSIC -->
+<audio id="bg-music" loop>
+  <source src="family.mp3" type="audio/mpeg">
+</audio>
+
+<script>
+  window.addEventListener('DOMContentLoaded', function() {
+    var audio = document.getElementById("bg-music");
+    audio.volume = 0.5;
+    var playPromise = audio.play();
+    if (playPromise !== undefined) {
+      playPromise.then(_ => {}).catch(error => {
+        document.body.addEventListener('click', function() {
+          audio.play();
+        }, { once: true });
+      });
+    }
+  });
+</script>
+
+</body>
+</html>
