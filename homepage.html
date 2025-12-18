@@ -1,0 +1,409 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Hazirah's Personal Website</title>
+<!-- IMPORT GOOGLE FONTS -->
+<link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,600;1,400&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+<style>
+/* --- 1. RESET & GENERAL --- */
+* { box-sizing: border-box; }
+
+body, html {
+  margin: 0;
+  padding: 0;
+  font-family: 'Poppins', sans-serif;
+  background-color: #fdfcf8; /* Cream background */
+  color: #332421;
+  scroll-behavior: smooth; /* Smooth scrolling for links */
+}
+
+h1, h2, h3 { font-family: 'Lora', serif; }
+
+/* --- 2. STICKY TOP MENU (For Internal Sections) --- */
+.top-nav-bar {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  background: rgba(51, 36, 33, 0.9);
+  backdrop-filter: blur(10px);
+  z-index: 1000;
+  display: flex;
+  justify-content: center;
+  padding: 15px 0;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+}
+
+.top-nav-bar a {
+  color: #fff;
+  text-decoration: none;
+  margin: 0 20px;
+  font-size: 0.9rem;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  transition: 0.3s;
+}
+
+.top-nav-bar a:hover { color: #bba487; }
+
+/* --- 3. HERO SECTION --- */
+.hero-image {
+  background-image: linear-gradient(rgba(51, 36, 33, 0.6), rgba(51, 36, 33, 0.4)), url("bg.jpg");
+  height: 80vh; 
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  color: white;
+  margin-top: 0;
+}
+
+.hero-text h1 {
+  font-size: 3rem;
+  margin: 0 0 10px 0;
+  text-shadow: 2px 2px 5px rgba(0,0,0,0.3);
+}
+
+.hero-subtitle {
+  font-size: 1.1rem;
+  font-weight: 300;
+  max-width: 700px;
+  margin-bottom: 20px;
+  line-height: 1.5;
+}
+
+#datetime {
+  font-size: 0.9rem;
+  background-color: rgba(187, 164, 135, 0.9);
+  color: #332421;
+  padding: 8px 25px;
+  border-radius: 50px;
+  margin-top: 15px;
+  font-weight: 600;
+  backdrop-filter: blur(5px);
+}
+
+/* --- 4. FLOATING ICON NAVIGATION --- */
+.icon-sections {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 25px;
+  padding: 0 20px;
+  /* Matches Biodata/Education margin */
+  margin-top: -50px; 
+  position: relative;
+  z-index: 10;
+}
+
+.icon-card {
+  /* Matches Biodata/Education size */
+  width: 110px;
+  height: 110px;
+  background: white;
+  border-radius: 15px;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  text-decoration: none; 
+}
+
+.icon-card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 15px 30px rgba(187, 164, 135, 0.4);
+}
+
+.icon-emoji { font-size: 35px; margin-bottom: 5px; }
+.icon-text { font-size: 13px; font-weight: 600; color: #555; margin-top: 5px;}
+
+/* ACTIVE STATE (Dark Brown like Biodata/Education) */
+.active-icon {
+  background: #332421;
+  color: white;
+  transform: translateY(-10px);
+  box-shadow: 0 15px 30px rgba(51, 36, 33, 0.4);
+}
+
+.active-icon .icon-text { color: #bba487; }
+
+
+/* --- 5. CONTENT SECTIONS --- */
+.section-container {
+  max-width: 1000px;
+  margin: 80px auto;
+  padding: 0 20px;
+}
+
+/* Titles */
+.section-title {
+  text-align: center;
+  font-size: 2.2rem;
+  color: #332421;
+  margin-bottom: 20px;
+}
+
+.section-divider {
+  width: 60px;
+  height: 4px;
+  background-color: #bba487;
+  margin: 0 auto 40px auto;
+  border-radius: 2px;
+}
+
+/* About Me Box */
+.about-box {
+  background: white;
+  padding: 40px;
+  border-radius: 12px;
+  box-shadow: 0 5px 20px rgba(0,0,0,0.05);
+  text-align: center;
+  line-height: 1.8;
+  font-size: 1.05rem;
+  color: #555;
+  border-top: 5px solid #bba487;
+}
+
+/* Idols Grid */
+.idol-cards {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 30px;
+  justify-content: center;
+}
+
+.idol-card {
+  background: white;
+  border-radius: 15px;
+  box-shadow: 0 10px 20px rgba(0,0,0,0.08);
+  width: 280px;
+  overflow: hidden;
+  text-align: center;
+  transition: transform 0.3s;
+}
+
+.idol-card:hover { transform: translateY(-5px); }
+
+.idol-card img {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+  border-bottom: 3px solid #bba487;
+}
+
+.idol-info { padding: 20px; }
+.idol-info h3 { color: #332421; margin: 0 0 5px 0; font-size: 1.2rem; }
+.idol-info h4 { color: #bba487; margin: 0 0 15px 0; font-size: 0.9rem; font-weight: 600; text-transform: uppercase; }
+.idol-info p { font-size: 0.9rem; color: #666; line-height: 1.5; }
+
+/* Music Section */
+.music-box {
+  background: #332421; /* Dark background for contrast */
+  color: white;
+  padding: 40px;
+  border-radius: 20px;
+  text-align: center;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+}
+.music-box h2 { color: #bba487; }
+
+/* --- 6. FOOTER --- */
+.footer {
+  background-color: #332421;
+  color: #bba487;
+  text-align: center;
+  padding: 30px 0;
+  font-size: 0.9rem;
+  margin-top: 80px;
+}
+
+/* Responsive */
+@media screen and (max-width: 768px) {
+  .hero-text h1 { font-size: 2rem; }
+  .top-nav-bar { display: none; }
+}
+</style>
+</head>
+
+<body>
+
+<!-- STICKY INTERNAL NAV -->
+<nav class="top-nav-bar">
+  <a href="#aboutme">About Me</a>
+  <a href="#idols">Idols</a>
+  <a href="#music">Music</a>
+</nav>
+
+<!-- HERO -->
+<div class="hero-image">
+  <div class="hero-text">
+    <h1>Welcome to Hazirah’s World</h1>
+    <h1>⋆｡‧˚ʚ🧸ɞ˚‧｡⋆</h1>
+    <p class="hero-subtitle">Information Management Student | A Successful Daughter | Final Semester Student</p>
+    <p id="datetime"></p>
+  </div>
+</div>
+
+<!-- FLOATING ICONS (External Navigation) -->
+<div class="icon-sections">
+  
+  <!-- 1. HOME ICON (ACTIVE) -->
+  <div class="icon-card active-icon">
+    <div class="icon-inner">
+      <div class="icon-emoji">🏠</div>
+      <div class="icon-text">Home</div>
+    </div>
+  </div>
+
+  <!-- 2. BIODATA (THIS LINKS TO BIODATA.HTML) -->
+  <a href="biodata.html" class="icon-card">
+    <div class="icon-inner">
+      <div class="icon-emoji">🧾</div>
+      <div class="icon-text">Biodata</div>
+    </div>
+  </a>
+
+  <!-- 3. EDUCATION (THIS LINKS TO EDUCATION.HTML) -->
+  <a href="education.html" class="icon-card">
+    <div class="icon-inner">
+      <div class="icon-emoji">🎓</div>
+      <div class="icon-text">Education</div>
+    </div>
+  </a>
+
+ <!-- 4. EXPERIENCE ICON (LINKS TO EXPERIENCE.HTML) -->
+  <a href="experience.html" class="icon-card">
+    <div class="icon-inner">
+      <div class="icon-emoji">💼</div>
+      <div class="icon-text">Experience</div>
+    </div>
+  </a>
+
+<!-- 5. FAMILY ICON (LINKS TO FAMILY.HTML) -->
+  <a href="family.html" class="icon-card">
+    <div class="icon-inner">
+      <div class="icon-emoji">👨‍👩‍👧‍👦</div>
+      <div class="icon-text">Family</div>
+    </div>
+  </a>
+
+<!-- 6. GALLERY ICON (LINKS TO GALLERY.HTML) -->
+  <a href="gallery.html" class="icon-card">
+    <div class="icon-inner">
+      <div class="icon-emoji">🖼️</div>
+      <div class="icon-text">Gallery</div>
+    </div>
+  </a>
+</div>
+
+<!-- 1. ABOUT ME SECTION -->
+<div class="section-container" id="aboutme">
+  <h2 class="section-title">Me, Myself & I 🧸</h2>
+  <div class="section-divider"></div>
+  
+  <div class="about-box">
+    <p>Hi everyone, my name is <b>Nur Azma Hazirah</b>, or you can call me <b>⋆. 𐙚˚࿔ hazirah 𝜗𝜚˚⋆</b>.</p>
+    <br>
+    <p>I created this personal website as a space to share my journey, experiences, and the things that have shaped who I am. As the saying goes, <i>"if you do not know, you do not love"</i> 🎀🫶🏻💌💓. I hope this website helps you understand me better through my stories📖, interests, dreams💭, and the moments that have influenced my life.</p>
+    <br>
+    <p>This website reflects my growth as a student👩🏻‍💻, a daughter👧🏻, and an individual who enjoys learning. Welcome, and thank you for visiting my personal website. ᵗᑋᵃᐢᵏ ᵞᵒᵘ*🎀</p>
+  </div>
+</div>
+
+<!-- 2. IDOLS SECTION -->
+<div class="section-container" id="idols">
+  <h2 class="section-title">People I Admire 👑</h2>
+  <div class="section-divider"></div>
+
+  <div class="idol-cards">
+    <!-- Card 1 -->
+    <div class="idol-card">
+      <img src="muhammad.jpg" alt="Prophet Muhammad">
+      <div class="idol-info">
+        <h3>Prophet Muhammad (ﷺ)</h3>
+        <h4>Leader & Teacher</h4>
+        <p>Known for honesty, compassion, and patience. His teachings form the moral and ethical foundation of Islam.</p>
+      </div>
+    </div>
+
+    <!-- Card 2 -->
+    <div class="idol-card">
+      <img src="sumayyah.jpg" alt="Sumayyah">
+      <div class="idol-info">
+        <h3>Sumayyah binti Khayyat</h3>
+        <h4>First Shahīdah</h4>
+        <p>She showed extraordinary courage and strength, standing firm in her belief despite torture. A symbol of faith.</p>
+      </div>
+    </div>
+
+    <!-- Card 3 -->
+    <div class="idol-card">
+      <img src="ibu.jpg" alt="Ibu">
+      <div class="idol-info">
+        <h3>Hana Ezuanee</h3>
+        <h4>My Lovely Ibu 💓</h4>
+        <p>She sacrifices time and energy for the family. Teaches values like honesty and patience. My guiding figure.</p>
+      </div>
+    </div>
+
+    <!-- Card 4 -->
+    <div class="idol-card">
+      <img src="abah.jpg" alt="Abah">
+      <div class="idol-info">
+        <h3>Azamnudin</h3>
+        <h4>My Hero (Abah) 🦸🏻‍♂️</h4>
+        <p>Shows dedication, sacrifice, and hard work. Inspires me to face challenges with courage and dignity.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- 3. MUSIC SECTION -->
+<div class="section-container" id="music">
+  <div class="music-box">
+    <h2>🎵 Music That I Love</h2>
+    <p>Here is one of my favourite songs! Click play to listen 💗</p>
+    <br>
+    <audio controls style="width: 80%; max-width: 400px;">
+      <source src="lemonade.mp3" type="audio/mpeg">
+      Your browser does not support the audio element.
+    </audio>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<div class="footer">
+  &copy; 2025 Nur Azma Hazirah Binti Azamnudin. All rights reserved.
+</div>
+
+<!-- SCRIPTS -->
+<script>
+function updateDateTime() {
+  const now = new Date();
+  const utc = now.getTime() + now.getTimezoneOffset() * 60000;
+  const malaysiaTime = new Date(utc + 8 * 3600000);
+
+  const options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
+  const dateStr = malaysiaTime.toLocaleDateString('en-GB', options);
+  const timeStr = malaysiaTime.toLocaleTimeString('en-GB');
+
+  document.getElementById('datetime').textContent = dateStr + ' | ' + timeStr + ' (Malaysia Time)';
+}
+
+updateDateTime();
+setInterval(updateDateTime, 1000);
+</script>
+
+</body>
+</html>
