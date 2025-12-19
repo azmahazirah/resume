@@ -1,0 +1,94 @@
+/* --- 1. RESET & GENERAL --- */
+* { box-sizing: border-box; }
+body, html { margin: 0; padding: 0; font-family: 'Poppins', sans-serif; background-color: #fdfcf8; color: #332421; scroll-behavior: smooth; }
+h1, h2, h3 { font-family: 'Lora', serif; }
+
+/* --- 2. HERO SECTION --- */
+.hero-image {
+  background-image: linear-gradient(rgba(51, 36, 33, 0.7), rgba(51, 36, 33, 0.5)), url("bg.jpg");
+  height: 60vh; background-position: center; background-size: cover;
+  display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; color: white;
+}
+.hero-text h1 { font-size: 3.5rem; margin: 0; text-shadow: 2px 2px 4px rgba(0,0,0,0.3); }
+#datetime { font-size: 0.9rem; background-color: rgba(187, 164, 135, 0.9); color: #332421; padding: 8px 25px; border-radius: 50px; margin-top: 15px; font-weight: 600; }
+
+/* --- 3. ICON NAVIGATION (CENTRING FIX) --- */
+.icon-sections { display: flex; justify-content: center; flex-wrap: wrap; gap: 20px; padding: 0 20px; margin-top: -50px; position: relative; z-index: 10; }
+
+.icon-card {
+  width: 110px; height: 110px;
+  background: white; border-radius: 15px;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.1); 
+  display: flex; flex-direction: column;
+  align-items: center; justify-content: center; /* FIXED: Centers everything inside */
+  text-align: center; text-decoration: none;
+  transition: 0.3s ease;
+}
+
+.icon-card:hover { transform: translateY(-10px); box-shadow: 0 15px 30px rgba(187, 164, 135, 0.4); }
+
+.active-icon { background: #332421; color: white; transform: translateY(-10px); }
+.active-icon .icon-text { color: #bba487; }
+
+.icon-emoji { font-size: 35px; line-height: 1; margin-bottom: 5px; } /* FIXED: Line height prevents emoji offset */
+.icon-text { font-size: 13px; font-weight: 600; color: #555; }
+
+/* --- 4. EXPERIENCE GRID --- */
+.experience-container { max-width: 1100px; margin: 80px auto; padding: 0 20px; }
+.exp-intro { text-align: center; margin-bottom: 50px; }
+.job-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 30px; }
+
+.job-card {
+  background: white; border-radius: 20px; padding: 25px;
+  border-bottom: 5px solid #bba487;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+  display: flex; flex-direction: column;
+  opacity: 0; transform: translateY(20px); transition: 0.4s ease;
+}
+
+.job-card:hover { transform: translateY(-10px); box-shadow: 0 15px 35px rgba(51, 36, 33, 0.1); }
+
+.highlight-card { grid-column: 1 / -1; border-left: 10px solid #332421; }
+
+.job-header { display: flex; align-items: center; gap: 15px; margin-bottom: 15px; }
+.logo-box { width: 65px; height: 65px; border-radius: 50%; overflow: hidden; border: 2px solid #bba487; flex-shrink: 0; }
+.logo-box img { width: 100%; height: 100%; object-fit: cover; }
+
+.job-title-area h3 { margin: 0; font-size: 1.2rem; color: #332421; }
+.job-company { color: #bba487; font-weight: 600; font-size: 0.85rem; }
+.job-duration { background: #f4ece4; padding: 3px 10px; border-radius: 10px; font-size: 0.75rem; font-weight: bold; margin-top: 4px; display: inline-block; }
+
+.job-desc { color: #666; font-size: 0.9rem; line-height: 1.5; margin-bottom: 15px; flex-grow: 1; }
+
+/* --- MAP BUTTONS & FOOTER AREA --- */
+.job-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  margin-top: 15px;
+  gap: 10px;
+}
+
+.skill-tags { display: flex; flex-wrap: wrap; gap: 5px; flex: 1; }
+.tag { font-size: 0.7rem; background: #332421; color: white; padding: 4px 8px; border-radius: 4px; }
+
+.map-btn {
+  text-decoration: none;
+  background: #bba487;
+  color: #332421;
+  font-size: 0.75rem;
+  font-weight: 600;
+  padding: 8px 12px;
+  border-radius: 8px;
+  transition: 0.3s;
+  white-space: nowrap;
+}
+
+.map-btn:hover { background: #332421; color: #bba487; }
+
+.footer { background-color: #332421; color: #bba487; text-align: center; padding: 30px 0; margin-top: 80px; }
+
+@media screen and (max-width: 768px) {
+  .highlight-card { grid-column: auto; }
+  .job-footer { flex-direction: column; align-items: flex-start; }
+}
